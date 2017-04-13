@@ -1,12 +1,13 @@
-class ExamsController < ApplicationController
+class Admin::ExamsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-
-  def index
-    @exams = Exam.all
-  end
+  before_action :require_is_admin
 
   def show
     @exam = Exam.find(params[:id])
+  end
+
+  def index
+    @exams = Exam.all
   end
 
   def new
@@ -17,7 +18,7 @@ class ExamsController < ApplicationController
     @exam = Exam.new(exam_params)
 
     if @exam.save
-      redirect_to exams_path
+      redirect_to admin_exams_path
     else
       render :new
     end
@@ -29,9 +30,8 @@ class ExamsController < ApplicationController
 
   def update
     @exam = Exam.find(params[:id])
-
     if @exam.update(exam_params)
-      redirect_to exams_path
+      redirect_to admin_exams_path
     else
       render :edit
     end
@@ -39,9 +39,10 @@ class ExamsController < ApplicationController
 
   def destroy
     @exam = Exam.find(params[:id])
+
     @exam.destroy
 
-    redirect_to exams_path
+    redirect_to admin_exams_path
   end
 
   private
