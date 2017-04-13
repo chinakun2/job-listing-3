@@ -5,6 +5,26 @@
 <br><br>
 
 <table class="table table-boldered">
+  <thead>
+    <tr>
+      <td>
+        考试
+      </td>
+
+      <td>
+        收到报名数量
+      </td>
+
+      <td>
+        管理选项
+      </td>
+
+      <td>
+        发布时间
+      </td>
+    </tr>
+  </thead>
+
   <% @exams.each do |exam| %>
   <tr>
     <td>
@@ -12,10 +32,12 @@
 
       <%= link_to(exam.title, admin_exam_path(exam)) %>
     </td>
+    <td> <%= link_to(exam.resumes.count, admin_exam_resumes_path(exam)) %> </td>
     <td>
       <%= link_to("Edit", edit_admin_exam_path(exam)) %>
+      |
       <%= link_to("Dsetroy", admin_exam_path(exam), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-
+      |
       <% if exam.is_hidden %>
 
         <%= link_to("Publish", publish_admin_exam_path(exam), :method => :post, :class => "btn btn-xs btn-default") %>
