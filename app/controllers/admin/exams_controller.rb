@@ -48,6 +48,6 @@ class Admin::ExamsController < ApplicationController
   private
 
   def exam_params
-    params.require(:exam).permit(:title, :description)
+    params.require(:exam).permit(:title, :description, :is_hidden)
   end
 end

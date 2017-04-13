@@ -2,7 +2,7 @@ class ExamsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @exams = Exam.all
+    @exams = Exam.where(:is_hidden => false).order("created_at DESC")
   end
 
   def show
@@ -47,6 +47,6 @@ class ExamsController < ApplicationController
   private
 
   def exam_params
-    params.require(:exam).permit(:title, :description)
+    params.require(:exam).permit(:title, :description, :is_hidden)
   end
 end

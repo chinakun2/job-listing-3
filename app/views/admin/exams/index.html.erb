@@ -8,6 +8,8 @@
   <% @exams.each do |exam| %>
   <tr>
     <td>
+      <%= render_exam_status(exam) %>
+
       <%= link_to(exam.title, admin_exam_path(exam)) %>
     </td>
     <td>
