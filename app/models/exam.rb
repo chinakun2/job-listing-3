@@ -10,4 +10,6 @@ class Exam < ApplicationRecord
     self.is_hidden = true
     self.save
   end
+
+  has_many :resumes
 end

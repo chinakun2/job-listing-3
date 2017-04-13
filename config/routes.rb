@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :exams
+  resources :exams do
+    resources :resumes
+  end
 
   namespace :admin do
     resources :exams do

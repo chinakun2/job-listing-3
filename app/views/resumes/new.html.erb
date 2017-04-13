@@ -1,0 +1,10 @@
+<h3> 提交信息到 <%= @exam.title %> </h3>
+
+<hr>
+
+<%= simple_form_for [@exam, @resume] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :attachment %>
+
+  <%= f.submit "送出" %>
+<% end %>
