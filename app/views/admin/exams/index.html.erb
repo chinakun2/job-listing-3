@@ -15,6 +15,13 @@
     <td>
       <%= link_to("Edit", edit_admin_exam_path(exam)) %>
       <%= link_to("Dsetroy", admin_exam_path(exam), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+
+      <% if exam.is_hidden %>
+
+        <%= link_to("Publish", publish_admin_exam_path(exam), :method => :post, :class => "btn btn-xs btn-default") %>
+      <% else %>
+        <%= link_to("Hide", hide_admin_exam_path(exam), :method=> :post, :class => "btn btn-xs btn-default") %>
+      <% end %>
     </td>
     <td>
       <%= exam.created_at %>

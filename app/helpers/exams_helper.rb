@@ -1,10 +1,10 @@
 module ExamsHelper
-
   def render_exam_status(exam)
     if exam.is_hidden
-      "(Hidden)"
+      content_tag(:span, "", :class => "fa fa-lock")
     else
-      "(Public)"
+      content_tag(:span, "", :class => "fa fa-globe")
     end
   end
+
 end

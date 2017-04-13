@@ -7,6 +7,11 @@ class ExamsController < ApplicationController
 
   def show
     @exam = Exam.find(params[:id])
+
+    if @exam.is_hidden
+      flash[:warning] = "This examination already archieved"
+      redirect_to root_path
+    end
   end
 
   def new

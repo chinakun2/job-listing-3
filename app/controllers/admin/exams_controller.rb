@@ -46,6 +46,18 @@ class Admin::ExamsController < ApplicationController
     redirect_to admin_exams_path
   end
 
+  def publish
+    @exam = Exam.find(params[:id])
+    @exam.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @exam = Exam.find(params[:id])
+    @exam.hide!
+    redirect_to :back
+  end
+
   private
 
   def exam_params
