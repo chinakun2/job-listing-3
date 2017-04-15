@@ -1,0 +1,23 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我加入的考试 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Title </th>
+        <th> Description </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <% @exams.each do |exam| %>
+        <td> # </td>
+        <td><%= link_to(exam.title, exam_path(exam)) %></td>
+        <td><%= exam.description%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>    

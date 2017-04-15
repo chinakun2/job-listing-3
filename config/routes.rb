@@ -20,5 +20,9 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :account do
+    resources :exams
+  end
+
   root 'welcome#index'
 end

@@ -5,5 +5,9 @@
 
 </p>
 <div class="text-center">
-  <%= link_to("信息提交", new_exam_resume_path(@exam), :style => "font-size: 30px; text-decoration:underline;") %>
+  <% if current_user && current_user.has_applied?(@exam) %>
+    <%= link_to("已提交", '#', :style => "font-size: 30px; text-decoration:underline;") %>
+  <% else %>
+    <%= link_to("信息提交", new_exam_resume_path(@exam), :style => "font-size: 30px; text-decoration:underline;") %>
+  <% end %>
 </div>

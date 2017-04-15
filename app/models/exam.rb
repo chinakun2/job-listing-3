@@ -12,4 +12,6 @@ class Exam < ApplicationRecord
   end
 
   has_many :resumes
+  has_many :exam_relationships
+  has_many :members, through: :exam_relationships, source: :user
 end
