@@ -4,7 +4,7 @@
 
 <br><br>
 
-<table class="table table-boldered">
+<table class="table table-boldered table-striped custab" >
   <thead>
     <tr>
       <td>
@@ -34,15 +34,23 @@
     </td>
     <td> <%= link_to(exam.resumes.count, admin_exam_resumes_path(exam)) %> </td>
     <td>
-      <%= link_to("Edit", edit_admin_exam_path(exam)) %>
-      |
-      <%= link_to("Dsetroy", admin_exam_path(exam), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-      |
+      <!-- Edit button -->
+      <%= link_to edit_admin_exam_path(exam), class: "btn btn-xs btn-info" do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+      <!-- Destroy Button -->
+      <%= link_to admin_exam_path(exam), :method => :delete, :class => "btn btn-xs  btn-danger", :data => { :confirm => "Are you sure?" } do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+      <!-- Is_hidden Button -->
       <% if exam.is_hidden %>
-
-        <%= link_to("Publish", publish_admin_exam_path(exam), :method => :post, :class => "btn btn-xs btn-default") %>
+        <%= link_to publish_admin_exam_path(exam) , :method => :post, :class => "btn btn-xs btn-success" do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
       <% else %>
-        <%= link_to("Hide", hide_admin_exam_path(exam), :method=> :post, :class => "btn btn-xs btn-default") %>
+        <%= link_to hide_admin_exam_path(exam), :method => :post,  :class => "btn btn-xs btn-warning" do %>
+          <i class="fa fa-eye-slash"></i>
+        <% end %>
       <% end %>
     </td>
     <td>

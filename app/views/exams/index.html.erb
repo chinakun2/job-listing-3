@@ -1,17 +1,18 @@
-<div class="pull-right">
-  <%= link_to("Add an exam", new_exam_path, :class => "btn btn-default" ) %>
-</div>
+
 
 <table class="table table-boldered">
+  <thead>
+    <tr>
+      <td>考试</td>
+      <td>发布时间</td>
+    </tr>
+  </thead>
   <% @exams.each do |exam| %>
   <tr>
     <td>
       <%= link_to(exam.title, exam_path(exam)) %>
     </td>
-    <td>
-      <%= link_to("Edit", edit_exam_path(exam)) %> |
-      <%= link_to("Description", exam_path(exam), :method => :delete, :data => { :confirm => "Are you sure?"})%>
-    </td>
+
     <td>
       <%= exam.created_at %>
     </td>
