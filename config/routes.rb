@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
     resources :exams do
       member  do
         post :publish
         post :hide
       end
-
       resources :resumes
+
     end
+    resources :users
   end
 
   resources :welcome do

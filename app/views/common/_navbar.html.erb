@@ -20,6 +20,7 @@
                      </a>
                      <ul class="dropdown-menu">
                        <% if current_user.admin? %>
+                      <li> <%= link_to('用户管理', admin_users_path) %> </li>
                        <li> <%= link_to(content_tag(:i, '考试管理', class: 'fa fa-pencil'), admin_exams_path) %> </li>
                         <li class="divider"> </li>
                        <% end %>
