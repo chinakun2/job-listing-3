@@ -9,7 +9,7 @@ class ExamsController < ApplicationController
     @exam = Exam.find(params[:id])
 
     if @exam.is_hidden
-      flash[:warning] = "This examination already archieved"
+      flash[:warning] = "此考试未开放报名"
       redirect_to root_path
     end
   end
@@ -29,6 +29,7 @@ class ExamsController < ApplicationController
   end
 
   def edit
+    require_is_admin
     @exam = Exam.find(params[:id])
   end
 

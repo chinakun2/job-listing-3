@@ -10,11 +10,12 @@
   </div>
 <% end %>
 
-<%= form_for [:admin, @user] do |f| %>
+<%= simple_form_for [:admin, @user] do |f| %>
 
   <div class="form-group">
     <%= f.label :email %>
     <%= f.text_field :email, :class => "form-control" %>
+    <%= f.input :is_admin%>
   </div>
 
   <div class="form-group">
