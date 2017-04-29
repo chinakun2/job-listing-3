@@ -1,10 +1,18 @@
-<h1> Add an exam </h1>
+<br>
+<div class="col-md-8">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">增加一场考试</h3>
+    </div>
+    <div class="panel-body">
+      <%= simple_form_for [:admin, @exam] do |f| %>
 
-<%= simple_form_for [:admin, @exam] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :is_hidden %>
 
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :is_hidden %>
-
-  <%= f.submit "Submit" %>
-<% end %>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>

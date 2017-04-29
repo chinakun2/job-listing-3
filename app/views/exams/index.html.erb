@@ -1,21 +1,30 @@
+<div class="col-md-8 col-centered">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><h2>考试列表</h2></div>
+    <div class="panel-body">
+      <p>欢迎使用试中心，请点击考试名称进入报名页面</p>
+    </div>
 
+    <!-- Table -->
+    <table class="table table-boldered">
+      <thead>
+        <tr>
+          <td>考试</td>
+          <td>发布时间</td>
+        </tr>
+      </thead>
+      <% @exams.each do |exam| %>
+      <tr>
+        <td>
+          <%= link_to(exam.title, exam_path(exam)) %>
+        </td>
 
-<table class="table table-boldered">
-  <thead>
-    <tr>
-      <td>考试</td>
-      <td>发布时间</td>
-    </tr>
-  </thead>
-  <% @exams.each do |exam| %>
-  <tr>
-    <td>
-      <%= link_to(exam.title, exam_path(exam)) %>
-    </td>
-
-    <td>
-      <%= exam.created_at %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+        <td>
+          <%= exam.created_at %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,61 +1,65 @@
-<div class="pull-right">
-  <%= link_to("Add an exam", new_admin_exam_path, :class => "btn btn-default") %>
+<br/>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>
+      考试管理
+      <div class="pull-right">
+        <%= link_to("增加一场考试", new_admin_exam_path, :class => "btn btn-default") %>
+      </div>
+    </h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-boldered table-striped custab" >
+      <thead>
+        <tr>
+          <td>
+            考试
+          </td>
+          <td>
+            收到报名数量
+          </td>
+          <td>
+            管理选项
+          </td>
+          <td>
+            发布时间
+          </td>
+        </tr>
+      </thead>
+
+      <% @exams.each do |exam| %>
+      <tr>
+        <td>
+          <%= render_exam_status(exam) %>
+
+          <%= link_to(exam.title, admin_exam_path(exam)) %>
+        </td>
+        <td> <%= link_to(exam.resumes.count, admin_exam_resumes_path(exam)) %> </td>
+        <td>
+          <!-- Edit button -->
+          <%= link_to edit_admin_exam_path(exam), class: "btn btn-xs btn-info" do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <!-- Destroy Button -->
+          <%= link_to admin_exam_path(exam), :method => :delete, :class => "btn btn-xs  btn-danger", :data => { :confirm => "确定删除?" } do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+          <!-- Is_hidden Button -->
+          <% if exam.is_hidden %>
+            <%= link_to publish_admin_exam_path(exam) , :method => :post, :class => "btn btn-xs btn-success" do %>
+              <i class="fa fa-eye"></i>
+            <% end %>
+          <% else %>
+            <%= link_to hide_admin_exam_path(exam), :method => :post,  :class => "btn btn-xs btn-warning" do %>
+              <i class="fa fa-eye-slash"></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <%= exam.created_at %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
-
-<br><br>
-
-<table class="table table-boldered table-striped custab" >
-  <thead>
-    <tr>
-      <td>
-        考试
-      </td>
-
-      <td>
-        收到报名数量
-      </td>
-
-      <td>
-        管理选项
-      </td>
-
-      <td>
-        发布时间
-      </td>
-    </tr>
-  </thead>
-
-  <% @exams.each do |exam| %>
-  <tr>
-    <td>
-      <%= render_exam_status(exam) %>
-
-      <%= link_to(exam.title, admin_exam_path(exam)) %>
-    </td>
-    <td> <%= link_to(exam.resumes.count, admin_exam_resumes_path(exam)) %> </td>
-    <td>
-      <!-- Edit button -->
-      <%= link_to edit_admin_exam_path(exam), class: "btn btn-xs btn-info" do %>
-        <i class="fa fa-pencil"></i>
-      <% end %>
-      <!-- Destroy Button -->
-      <%= link_to admin_exam_path(exam), :method => :delete, :class => "btn btn-xs  btn-danger", :data => { :confirm => "确定删除?" } do %>
-        <i class="fa fa-trash-o"></i>
-      <% end %>
-      <!-- Is_hidden Button -->
-      <% if exam.is_hidden %>
-        <%= link_to publish_admin_exam_path(exam) , :method => :post, :class => "btn btn-xs btn-success" do %>
-          <i class="fa fa-eye"></i>
-        <% end %>
-      <% else %>
-        <%= link_to hide_admin_exam_path(exam), :method => :post,  :class => "btn btn-xs btn-warning" do %>
-          <i class="fa fa-eye-slash"></i>
-        <% end %>
-      <% end %>
-    </td>
-    <td>
-      <%= exam.created_at %>
-    </td>
-  </tr>
-  <% end %>
-</table>
